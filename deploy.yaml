@@ -1,0 +1,35 @@
+version: '2.0'
+
+services:
+  telemetry-node:
+    image: albertoighub/telemetry:latest   # O puedes usar la imagen empaquetada de tu repo
+    env:
+      - PORT=8080
+    expose:
+      - port: 8080
+        as: 80
+        to:
+          - global: true
+
+profiles:
+  compute:
+    telemetry-node:
+      resources:
+        cpu:
+          units: 0.5
+        memory:
+          size: 512Mi
+        storage:
+          size: 5Gi
+  placement:
+    akash:
+      pricing:
+        telemetry-node:
+            denom: uakt
+            amount: 100
+
+deployment:
+  telemetry-node:
+    akash:
+      profile: telemetry-node
+      count: 1
