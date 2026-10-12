@@ -2,7 +2,7 @@ version: '2.0'
 
 services:
   telemetry-node:
-    image: albertoighub/telemetry:latest   # O puedes usar la imagen empaquetada de tu repo
+    image: alberquinta/telemetry-2:latest
     env:
       - PORT=8080
     expose:
