@@ -10,9 +10,8 @@ def home():
     return "Sistema Multipoder V2.0 - Nodo Operativo", 200
 
 def run_web_server():
-    # Koyeb y Render inyectan la variable de entorno PORT; por defecto usamos el puerto 8080
     port = int(os.environ.get("PORT", 8080))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=port, debug=False)
 
 def background_worker():
     # Hilo secundario para ejecutar tareas en segundo plano (telemetría, micro-proxy, etc.)
