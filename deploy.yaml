@@ -10,26 +10,3 @@ services:
         as: 80
         to:
           - global: true
-
-profiles:
-  compute:
-    telemetry-node:
-      resources:
-        cpu:
-          units: 0.5
-        memory:
-          size: 512Mi
-        storage:
-          size: 5Gi
-  placement:
-    akash:
-      pricing:
-        telemetry-node:
-            denom: uakt
-            amount: 100
-
-deployment:
-  telemetry-node:
-    akash:
-      profile: telemetry-node
-      count: 1
