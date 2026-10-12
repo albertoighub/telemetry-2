@@ -1,0 +1,22 @@
+FROM python:3.11-slim
+
+# Instalar herramientas básicas de red y utilidades de sistema
+RUN apt-get update && apt-get install -y \
+    curl \
+    iproute2 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Configurar directorio de trabajo
+WORKDIR /app
+
+# Instalar dependencias web ligeras para mantener el servidor vivo ante el proxy de Koyeb/Render
+RUN pip install --no-cache-dir flask requests
+
+# Copiar el script de orquestación multiproceso
+COPY entrypoint.py /app/entrypoint.py
+
+# Exponer el puerto obligatorio que Koyeb/Render asigna dinámicamente ($PORT)
+EXPOSE 8080
+
+# Ejecutar el punto de entrada maestro
+CMD ["python", "entrypoint.py"]
