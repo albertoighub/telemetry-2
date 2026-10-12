@@ -19,4 +19,4 @@ COPY entrypoint.py /app/entrypoint.py
 EXPOSE 8080
 
 # Ejecutar el punto de entrada maestro
-CMD ["python", "entrypoint.py"]
+CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:8080", "entrypoint:app"]
