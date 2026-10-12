@@ -5,10 +5,9 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route('/')
-def health_check():
-    # Respuesta estándar para que los balanceadores de carga de Render/Koyeb vean el servicio activo
-    return "System Operational - Multipower Node V2.0", 200
+@app.route("/")
+def home():
+    return "Sistema Multipoder V2.0 - Nodo Operativo", 200
 
 def run_web_server():
     # Koyeb y Render inyectan la variable de entorno PORT; por defecto usamos el puerto 8080
