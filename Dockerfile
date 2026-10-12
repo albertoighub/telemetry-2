@@ -4,7 +4,8 @@ RUN apt-get update && apt-get install -y curl iproute2 && rm -rf /var/lib/apt/li
 
 WORKDIR /app
 
-RUN pip install --no-cache-dir flask requests gunicorn
+# Instalamos las dependencias necesarias incluyendo psutil para telemetría
+RUN pip install --no-cache-dir flask requests gunicorn psutil
 
 COPY entrypoint.py /app/entrypoint.py
 
