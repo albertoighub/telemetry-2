@@ -35,7 +35,7 @@ def background_worker():
         except Exception as e:
             print(f"[BACKGROUND ERROR] No se pudieron obtener métricas: {e}")
         time.sleep(60)
-
+#Prueba
 if __name__ == "__main__":
     print("--- INICIANDO CONTENEDOR MULTIPODER CON TELEMETRÍA AVANZADA ---")
     worker_thread = threading.Thread(target=background_worker, daemon=True)
